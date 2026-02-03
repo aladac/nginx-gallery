@@ -1,20 +1,37 @@
 # nginx-gallery
-A simple photo / video gallery using only XSLT stylesheet for nginx'es autoindex function.
-Uses:
-- [TailwindCSS](https://tailwindcss.com)
-- [FontAwesome](https://fontawesome.com)
 
-# Preview
+A simple photo/video gallery using only an XSLT stylesheet for nginx's autoindex function. Zero server-side code required.
+
+## Features
+
+- Grid layout for images and videos
+- Breadcrumb navigation
+- Lazy loading for images
+- Dark theme
+- Supports mp4, webm, mkv, avi, wmv, flv, ogv video formats
+
+## Dependencies
+
+- [TailwindCSS 3.x](https://tailwindcss.com) (via CDN)
+- [FontAwesome 6.x](https://fontawesome.com) (via CDN)
+
+## Preview
 <img width="1259" alt="Screenshot 2023-08-07 at 22 45 37" src="https://github.com/aladac/nginx-gallery/assets/1140511/ffc5f55a-525d-4eb7-be2d-15ea33b652ff">
 <img width="1784" alt="Screenshot 2023-08-07 at 22 46 19" src="https://github.com/aladac/nginx-gallery/assets/1140511/0fb90d47-5ab1-4253-b8a1-ba17c2fd3ad9">
 <img width="1763" alt="Screenshot 2023-08-07 at 22 47 38" src="https://github.com/aladac/nginx-gallery/assets/1140511/ab56ebc0-803a-495b-b32a-b443b3396e9b">
 
 
 
-# Credit
+## Credit
 - Breadcrumbs taken from [this GitHub project](https://github.com/jbox-web/nginx-index-template)
 - Gallery taken from [this stack post](https://stackoverflow.com/questions/39575873/is-there-a-way-to-create-a-simple-static-image-gallery-in-nginx-without-any-thir)
-# Sample Configuration
+## Installation
+
+1. Copy `nginx-gallery.xslt` to your nginx configuration directory (e.g., `/etc/nginx/`)
+2. Configure your server block as shown below
+3. Reload nginx: `sudo nginx -s reload`
+
+## Sample Configuration
 ```nginx
 server {
     listen 80;
@@ -40,3 +57,12 @@ server {
     }
 }
 ```
+
+## Requirements
+
+- nginx compiled with the [ngx_http_xslt_module](https://nginx.org/en/docs/http/ngx_http_xslt_module.html)
+- Internet connection (for CDN assets)
+
+## License
+
+MIT
