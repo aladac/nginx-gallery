@@ -71,8 +71,8 @@
           <xsl:value-of select="$title" />
         </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+        <script src="https://cdn.tailwindcss.com"></script>
         <style>
           .breadcrumb-item {
             display: inline-block;
@@ -116,7 +116,7 @@
                     </a>
                   </div>
                   <div>
-                    <video controls="" class="max-w-full h-auto" src="{.}" alt="{.}" title="{.}"/>
+                    <video controls="" preload="metadata" class="max-w-full h-auto rounded-lg" src="{.}" title="{.}"/>
                   </div>
                 </xsl:when>
                 <xsl:otherwise>
@@ -127,7 +127,7 @@
                   </div>
                   <div>
                     <a href="{.}" target="_blank">
-                      <img src="{.}" alt="{.}" title="{.}" class="inline-block max-w-20cm max-h-20cm align-bottom object-contain rounded-5"/>
+                      <img src="{.}" alt="{.}" title="{.}" loading="lazy" class="inline-block max-w-md max-h-96 align-bottom object-contain rounded-lg"/>
                     </a>
                   </div>
                 </xsl:otherwise>
