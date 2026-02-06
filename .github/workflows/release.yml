@@ -9,9 +9,8 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  build-deb:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -22,15 +21,62 @@ jobs:
       - name: Build .deb package
         run: dpkg-buildpackage -us -uc -b
 
-      - name: Get package info
-        id: package
+      - name: Upload deb artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: deb-package
+          path: ../*.deb
+
+  build-rpm:
+    runs-on: ubuntu-latest
+    container: fedora:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: dnf install -y rpm-build rpmdevtools
+
+      - name: Setup RPM build tree
+        run: rpmdev-setuptree
+
+      - name: Get version
+        id: version
+        run: echo "version=${GITHUB_REF_NAME#v}" >> $GITHUB_OUTPUT
+
+      - name: Create source tarball
         run: |
-          DEB_FILE=$(ls ../*.deb)
-          echo "deb_file=$DEB_FILE" >> $GITHUB_OUTPUT
-          echo "deb_name=$(basename $DEB_FILE)" >> $GITHUB_OUTPUT
+          mkdir -p nginx-gallery-${{ steps.version.outputs.version }}
+          cp -r nginx-gallery.xslt css webfonts debian README.md LICENSE nginx-gallery-${{ steps.version.outputs.version }}/
+          tar czf ~/rpmbuild/SOURCES/nginx-gallery-${{ steps.version.outputs.version }}.tar.gz nginx-gallery-${{ steps.version.outputs.version }}
+
+      - name: Build RPM
+        run: rpmbuild -ba nginx-gallery.spec
+
+      - name: Upload rpm artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rpm-package
+          path: ~/rpmbuild/RPMS/noarch/*.rpm
+
+  release:
+    needs: [build-deb, build-rpm]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download deb artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: deb-package
+          path: packages/
+
+      - name: Download rpm artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: rpm-package
+          path: packages/
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          files: ${{ steps.package.outputs.deb_file }}
+          files: packages/*
           generate_release_notes: true
