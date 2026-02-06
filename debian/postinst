@@ -1,0 +1,27 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+    configure)
+        echo ""
+        echo "nginx-gallery installed successfully!"
+        echo ""
+        echo "To use nginx-gallery:"
+        echo "  1. Copy the example config:"
+        echo "     cp /usr/share/doc/nginx-gallery/examples/nginx-gallery.conf /etc/nginx/sites-available/"
+        echo ""
+        echo "  2. Edit the config to set your server_name and gallery root"
+        echo ""
+        echo "  3. Enable the site and reload nginx:"
+        echo "     ln -s /etc/nginx/sites-available/nginx-gallery.conf /etc/nginx/sites-enabled/"
+        echo "     nginx -s reload"
+        echo ""
+        echo "Note: nginx must be compiled with ngx_http_xslt_module"
+        echo "      (included in nginx-full package)"
+        echo ""
+        ;;
+esac
+
+#DEBHELPER#
+
+exit 0

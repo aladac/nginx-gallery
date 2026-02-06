@@ -1,0 +1,28 @@
+Source: nginx-gallery
+Section: web
+Priority: optional
+Maintainer: Adam Ladachowski <adam@saiden.pl>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.6.0
+Homepage: https://github.com/aladac/nginx-gallery
+Vcs-Browser: https://github.com/aladac/nginx-gallery
+Vcs-Git: https://github.com/aladac/nginx-gallery.git
+Rules-Requires-Root: no
+
+Package: nginx-gallery
+Architecture: all
+Depends: ${misc:Depends}, nginx
+Suggests: nginx-full
+Description: Simple photo/video gallery using nginx autoindex and XSLT
+ A lightweight gallery solution that uses nginx's built-in autoindex
+ module with XSLT transformation to display images and videos in a
+ responsive grid layout.
+ .
+ Features:
+  - Grid layout for images and videos
+  - Breadcrumb navigation
+  - Lazy loading for images
+  - Dark theme
+  - Supports mp4, webm, mkv, avi, wmv, flv, ogv video formats
+ .
+ Requires nginx compiled with ngx_http_xslt_module.

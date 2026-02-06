@@ -1,0 +1,10 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_install:
+	install -D -m 644 nginx-gallery.xslt $(CURDIR)/debian/nginx-gallery/usr/share/nginx-gallery/nginx-gallery.xslt
+	install -D -m 644 css/style.css $(CURDIR)/debian/nginx-gallery/usr/share/nginx-gallery/css/style.css
+	install -D -m 644 webfonts/fonts.woff2 $(CURDIR)/debian/nginx-gallery/usr/share/nginx-gallery/webfonts/fonts.woff2
+	install -D -m 644 debian/nginx-gallery.conf $(CURDIR)/debian/nginx-gallery/usr/share/doc/nginx-gallery/examples/nginx-gallery.conf
