@@ -1,3 +1,10 @@
+nginx-gallery (1.0.1-1) unstable; urgency=medium
+
+  * Add RPM packaging support
+  * Add LICENSE file
+
+ -- Adam Ladachowski <adam@saiden.pl>  Thu, 06 Feb 2026 18:35:00 +0000
+
 nginx-gallery (1.0.0-1) unstable; urgency=medium
 
   * Initial release
