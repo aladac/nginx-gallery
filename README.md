@@ -12,8 +12,7 @@ A simple photo/video gallery using only an XSLT stylesheet for nginx's autoindex
 
 ## Dependencies
 
-- [TailwindCSS 3.x](https://tailwindcss.com) (via CDN)
-- [FontAwesome 6.x](https://fontawesome.com) (via CDN)
+None - all CSS and fonts are included in the project.
 
 ## Preview
 <img width="1259" alt="Screenshot 2023-08-07 at 22 45 37" src="https://github.com/aladac/nginx-gallery/assets/1140511/ffc5f55a-525d-4eb7-be2d-15ea33b652ff">
@@ -28,8 +27,9 @@ A simple photo/video gallery using only an XSLT stylesheet for nginx's autoindex
 ## Installation
 
 1. Copy `nginx-gallery.xslt` to your nginx configuration directory (e.g., `/etc/nginx/`)
-2. Configure your server block as shown below
-3. Reload nginx: `sudo nginx -s reload`
+2. Copy `css/` and `webfonts/` directories to your web root (e.g., `/var/www/nginx-gallery/`)
+3. Configure your server block as shown below
+4. Reload nginx: `sudo nginx -s reload`
 
 ## Sample Configuration
 ```nginx
@@ -61,7 +61,6 @@ server {
 ## Requirements
 
 - nginx compiled with the [ngx_http_xslt_module](https://nginx.org/en/docs/http/ngx_http_xslt_module.html)
-- Internet connection (for CDN assets)
 
 ## License
 

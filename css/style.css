@@ -1,0 +1,173 @@
+/* Tailwind CSS utilities used by nginx-gallery */
+
+/* Reset/Base */
+*, ::before, ::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+}
+
+body {
+  margin: 0;
+  line-height: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+img, video {
+  display: block;
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Layout */
+.flex {
+  display: flex;
+}
+
+.inline {
+  display: inline;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* Flexbox/Grid Alignment */
+.items-center {
+  align-items: center;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-items-center {
+  justify-items: center;
+}
+
+/* Spacing */
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.space-x-2 > :not([hidden]) ~ :not([hidden]) {
+  margin-left: 0.5rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+/* Sizing */
+.h-auto {
+  height: auto;
+}
+
+.max-h-96 {
+  max-height: 24rem;
+}
+
+.max-w-full {
+  max-width: 100%;
+}
+
+.max-w-md {
+  max-width: 28rem;
+}
+
+/* Typography */
+.text-white {
+  color: #fff;
+}
+
+.text-yellow-500 {
+  color: #eab308;
+}
+
+/* Background */
+.bg-black {
+  background-color: #000;
+}
+
+/* Border */
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+/* Object Fit */
+.object-contain {
+  object-fit: contain;
+}
+
+/* Vertical Align */
+.align-bottom {
+  vertical-align: bottom;
+}
+
+/* FontAwesome minimal - solid style */
+.fas {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-style: normal;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  text-rendering: auto;
+  line-height: 1;
+}
+
+.fa-home::before {
+  content: "\f015";
+}
+
+.fa-folder::before {
+  content: "\f07b";
+}
+
+/* FontAwesome 6 Free - Solid (subset: home, folder) */
+@font-face {
+  font-family: "Font Awesome 6 Free";
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("../webfonts/fa-solid-900.woff2") format("woff2");
+}
+
+/* Breadcrumb styles from XSLT */
+.breadcrumb-item {
+  display: inline-block;
+}
+
+.breadcrumb-item:not(.home)::before {
+  content: "/";
+  padding: 0 10px;
+}
