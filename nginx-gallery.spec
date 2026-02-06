@@ -1,5 +1,5 @@
 Name:           nginx-gallery
-Version:        1.0.1
+Version:        1.0.2
 Release:        1%{?dist}
 Summary:        Simple photo/video gallery using nginx autoindex and XSLT
 
